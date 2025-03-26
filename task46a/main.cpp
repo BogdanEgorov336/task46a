@@ -2,6 +2,7 @@
 #include "logic.h"
 
 int main() {
+	srand(time(0));
 
 	int n, m;
 	cout << "Enter size of the matrix [n, m]: ";
@@ -20,7 +21,9 @@ int main() {
 	cout << "Matrix:\n" << convert_to_string(matrix, n, m);
 
 	cout << "There are saddle points in matrix: "
-		<< count_saddle_elements(matrix, n, m) << endl;
+		<< (count_saddle_elements(matrix, n, m) != 0
+			? to_string(count_saddle_elements(matrix, n, m))
+			: "there is no such ones.") << endl;
 
 	for (int i = 0; i < n; i++) {
 		delete[] matrix[i];
