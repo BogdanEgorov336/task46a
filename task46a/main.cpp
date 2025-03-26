@@ -1,4 +1,5 @@
 #include "util.h"
+#include "logic.h"
 
 int main() {
 
@@ -7,7 +8,7 @@ int main() {
 	cin >> n >> m;
 
 	int a, b;
-	cout << "Enter range of values generated: ";
+	cout << "Enter range of values generated [a - b]: ";
 	cin >> a >> b;
 
 	int** matrix = new int*[n];
@@ -18,7 +19,8 @@ int main() {
 	init(matrix, n, m, a, b);
 	cout << "Matrix:\n" << convert_to_string(matrix, n, m);
 
-
+	cout << "There are saddle points in matrix: "
+		<< count_saddle_elements(matrix, n, m) << endl;
 
 	for (int i = 0; i < n; i++) {
 		delete[] matrix[i];
